@@ -1,0 +1,67 @@
+{{#if preview}}
+  {{#each preview as |p|}}
+    {{#if site.mobileView}}
+      <div style={{border-color p.color}} class="category-list-item category {{p.className}}">
+        <table class="topic-list">
+          <tbody>
+            <tr>
+              <th class="main-link">
+                <h3>
+                  {{#if p.href}}
+                    <a class="category-title-link" href={{p.href}}>
+                      <div class="category-text-title">
+                        {{#if (theme-setting 'locked_icon')}}
+                          {{d-icon (theme-setting 'locked_icon')}}
+                        {{/if}}
+                        <span class="category-name">{{p.title}}</span>
+                      </div>
+                    </a>
+                  {{else}}
+                    <div class="category-text-title">
+                      {{#if (theme-setting 'locked_icon')}}
+                        {{d-icon (theme-setting 'locked_icon')}}
+                      {{/if}}
+                      <span class="category-name">{{p.title}}</span>
+                    </div>
+                  {{/if}}
+                </h3>
+              </th>
+            </tr>
+            <tr class="category-description">
+              <td colspan="3">
+                <div class="category-description">{{html-safe p.description}}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    {{else}}
+      <tr class={{p.className}}>
+        <td colspan=2 class="category {{if noCategoryStyle "no-category-style"}}" style={{unless noCategoryStyle (border-color p.color)}}>
+          <h3>
+            {{#if p.href}}
+              <a class="category-title-link" href={{p.href}}>
+                <div class="category-text-title">
+                  {{#if (theme-setting 'locked_icon')}}
+                    {{d-icon (theme-setting 'locked_icon')}}
+                  {{/if}}
+                  <span class="category-name">{{p.title}}</span>
+                </div>
+              </a>
+            {{else}}
+              <div class="category-text-title">
+                {{#if (theme-setting 'locked_icon')}}
+                  {{d-icon (theme-setting 'locked_icon')}}
+                {{/if}}
+                <span class="category-name">{{p.title}}</span>
+              </div>
+            {{/if}}
+          </h3>
+          {{#if p.description}}
+            <div class="category-description">{{p.description}}</div>
+          {{/if}}
+        </td>
+      </tr>
+    {{/if}}
+  {{/each}}
+{{/if}}

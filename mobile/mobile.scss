@@ -1,0 +1,11 @@
+.category-list.with-topics {
+  .category-list-item[class*="above-"] {
+    tr.category-description {
+      display: table-row;
+      border-bottom: none;
+    }
+    div.category-description {
+      display: block;
+    }
+  }
+}
