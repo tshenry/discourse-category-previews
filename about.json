@@ -1,7 +1,7 @@
 {
   "name": "Category Previews",
-  "about_url": null,
-  "license_url": null,
+  "about_url": "https://meta.discourse.org/t/category-previews/155296",
+  "license_url": "https://github.com/tshenry/discourse-category-previews/blob/master/LICENSE",
   "component": true,
   "minimum_discourse_version": "2.5.0.beta7"
 }
