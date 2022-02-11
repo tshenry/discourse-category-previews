@@ -6,6 +6,7 @@ const rawCategoryPreviews = settings.category_previews.split("|");
 
 export default Component.extend({
   noCategoryStyle: equal("siteSettings.category_style", "none"),
+  boxStyle: equal("siteSettings.desktop_category_page_style", "categories_boxes"),
 
   @discourseComputed()
   preview() {
