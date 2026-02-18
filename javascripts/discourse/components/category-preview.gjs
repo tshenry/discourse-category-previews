@@ -2,12 +2,15 @@ import Component from "@glimmer/component";
 import { computed } from "@ember/object";
 import { equal } from "@ember/object/computed";
 import { service } from "@ember/service";
+import PluginOutlet from "discourse/components/plugin-outlet";
 import borderColor from "discourse/helpers/border-color";
 import htmlSafe from "discourse/helpers/html-safe";
+import lazyHash from "discourse/helpers/lazy-hash";
 import CategoryPreviewTextTitle from "./category-preview-text-title";
 
 export default class CategoryPreview extends Component {
   @service siteSettings;
+  @service currentUser;
   @service site;
 
   @equal("siteSettings.category_style", "none") noCategoryStyle;
@@ -64,8 +67,11 @@ export default class CategoryPreview extends Component {
               {{p.className}}"
           >
             <div class="category-box-inner">
-              <div class="category-logo">
-              </div>
+              <PluginOutlet
+                @name="category-preview-before-details"
+                @connectorTagName="div"
+                @outletArgs={{lazyHash preview=p}}
+              />
               <div class="category-details">
                 <div class="category-box-heading">
                   {{#if p.href}}
@@ -86,6 +92,11 @@ export default class CategoryPreview extends Component {
                   </div>
                 {{/if}}
               </div>
+              <PluginOutlet
+                @name="category-preview-after-details"
+                @connectorTagName="div"
+                @outletArgs={{lazyHash preview=p}}
+              />
             </div>
           </div>
         {{else if this.site.mobileView}}
